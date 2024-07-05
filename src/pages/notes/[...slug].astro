@@ -1,4 +1,5 @@
 ---
+import EditLink from '@components/EditLink.astro'
 import NoteMeta from '@components/note/NoteMeta.astro'
 import NotePagination from '@components/note/NotePagination.astro'
 import NoteSchema from '@components/note/NoteSchema.astro'
@@ -31,6 +32,7 @@ const { Content } = await note.render()
   <NoteMeta {note} showUpdates slot="content-header" tag="header" />
   <Prose>
     <Content />
+    <EditLink slug={`src/content/notes/${note.id}`} />
   </Prose>
   <NotePagination {note} />
 </Page>
