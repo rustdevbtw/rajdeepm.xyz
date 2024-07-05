@@ -77,6 +77,7 @@
     ]
   },
   "dependencies": {
+    "@astrojs/vercel": "^7.7.2",
     "@catppuccin/vscode": "^3.14.0"
   }
 }
