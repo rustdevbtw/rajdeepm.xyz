@@ -19,17 +19,12 @@ Yes, and no. I have done _some_ big stuff (big in the sense that it felt conside
 Yeah, that's true. I _love_ Linux and Open-Source. That can be evident from [my dotfiles](https://github.com/rustdevbtw/.dots).
 Or that, in the end of my _every_ post, you'll find:
 
-```c title="end.c"
-#include <stdio.h>
+```bash title="end.sh"
+#!/bin/bash
 
-int main() {
-  for (;;) {
-    printf("Continues");
-  }
-  printf("The End.");
+while :; do echo "Continue..."; done
 
-  return 0;
-}
+echo "The End."
 ```
 
 :::note
@@ -39,4 +34,4 @@ For those wondering, that loop _never_ ends, so we never get `"The End."`!
 ## So, why is it soooooo boring?
 
 I suck at making any type of content, including blogs. I'm more used to code than blog.  
-If I could have just code in my blog, that would've suited me. But the world is this way...
+If I could just code in my blog, that would've suited me. But the world is this way...
