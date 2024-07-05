@@ -1,0 +1,12 @@
+---
+import { getNoteSchema, type Note } from '@libs/note'
+import { Schema } from 'astro-seo-schema'
+
+export interface Props {
+  note: Note
+}
+
+const { note } = Astro.props
+---
+
+<Schema item={{ '@context': 'https://schema.org', ...getNoteSchema(note, Astro.site) }} />

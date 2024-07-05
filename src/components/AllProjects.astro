@@ -1,0 +1,49 @@
+---
+import Repos from '@components/repo/Repos.astro'
+import Section from '@components/ui/Section.astro'
+import { fetchGitHubRepos, type GitHubRepo } from '@libs/github'
+import { getEntry } from 'astro:content'
+
+const repos = await fetchGitHubRepos()
+
+const projectCategories = await getEntry('categories', 'projects')
+const categories = await Promise.all(
+  projectCategories.data.map((categoryReference) => getEntry('category', categoryReference.id)),
+)
+
+const reposByCategories = new Map<string, GitHubRepo[]>()
+const uncategorizedRepos: GitHubRepo[] = []
+
+for (const category of categories) {
+  const categoryRepos: GitHubRepo[] = []
+
+  for (const repo of repos) {
+    if (category.data.repos.includes(repo.name.toLowerCase())) {
+      categoryRepos.push(repo)
+    }
+  }
+
+  reposByCategories.set(category.data.name, categoryRepos)
+}
+
+for (const repo of repos) {
+  if (![...reposByCategories.values()].flat().includes(repo)) {
+    uncategorizedRepos.push(repo)
+  }
+}
+---
+
+{
+  [...reposByCategories.entries()].map(([categoryName, categoryRepos]) => (
+    <Section title={categoryName}>
+      <Repos repos={categoryRepos} />
+    </Section>
+  ))
+}
+{
+  uncategorizedRepos.length > 0 && (
+    <Section title="Other Projects">
+      <Repos repos={uncategorizedRepos} />
+    </Section>
+  )
+}

@@ -1,0 +1,32 @@
+---
+import { slug } from '@libs/string'
+import type { HTMLAttributes } from 'astro/types'
+
+export interface Props {
+  title?: string
+  titleProps?: HTMLAttributes<'h2'>
+}
+
+const { title, titleProps } = Astro.props
+---
+
+<section>
+  {
+    title && (
+      <h2 {...titleProps} id={slug(title)}>
+        {title}
+      </h2>
+    )
+  }
+  <slot />
+</section>
+
+<style>
+  section + section {
+    margin-top: var(--size-6);
+
+    @media (--md-n-above) {
+      margin-top: var(--size-8);
+    }
+  }
+</style>

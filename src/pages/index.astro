@@ -1,0 +1,13 @@
+---
+import About from '@components/About.astro'
+import RecentNotes from '@components/RecentNotes.astro'
+import RecentProjects from '@components/RecentProjects.astro'
+import Page from '@layouts/Page.astro'
+export const prerender = true
+---
+
+<Page metaDescription="Rajdeep's projects and notes" title="Rajdeep's Personal Website" titleVisibility="hidden">
+  <About />
+  <RecentNotes />
+  <RecentProjects />
+</Page>

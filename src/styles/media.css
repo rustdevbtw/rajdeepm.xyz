@@ -1,0 +1,14 @@
+@custom-media --xxs-n-above (width >= 360px);
+@custom-media --sm-n-above (width >= 640px);
+@custom-media --md-n-above (width >= 768px);
+
+@custom-media --motionSafe (prefers-reduced-motion: no-preference);
+
+@font-face {
+  font-family: 'CaskaydiaCove NF';
+  src: url('/fonts/Cas.ttf') format('truetype');
+}
+
+* {
+  font-family: 'CaskaydiaCove NF' !important;
+}

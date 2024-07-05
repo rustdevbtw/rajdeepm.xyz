@@ -1,0 +1,45 @@
+---
+import Icon from '@components/ui/Icon.astro'
+---
+
+<footer>
+  <p>
+    Brewed with <a href="https://astro.build">Astro</a> & <Icon aria-label="coffee" name="coffee" role="img" />
+  </p>
+  <p>
+    Hosted on <a href="https://vercel.com">Vercel</a>
+  </p>
+</footer>
+
+<style>
+  footer {
+    display: grid;
+    border-top: var(--size-px) solid var(--color-gray-800);
+    color: var(--color-text-dimmed);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    margin-top: var(--size-4);
+    padding: var(--size-8) var(--page-padding-inline) var(--size-12);
+    place-items: center;
+
+    @media (--md-n-above) {
+      margin-top: 0;
+    }
+
+    & :global(svg) {
+      --size: var(--size-5);
+
+      display: inline;
+      fill: currentColor;
+      height: var(--size);
+      margin-inline-start: var(--size-0-5);
+      vertical-align: top;
+      width: var(--size);
+    }
+  }
+
+  a:not(:focus-visible) {
+    color: var(--color-text-dimmed);
+    text-decoration: none;
+  }
+</style>
