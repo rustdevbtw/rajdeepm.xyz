@@ -56,7 +56,7 @@
   "engines": {
     "node": ">=18.14.1"
   },
-  "packageManager": "pnpm@8.7.0",
+  "packageManager": "bun@1.1.18",
   "private": true,
   "sideEffects": false,
   "keywords": [
@@ -77,7 +77,6 @@
     ]
   },
   "dependencies": {
-    "@astrojs/vercel": "^7.7.2",
     "@catppuccin/palette": "^1.2.0",
     "@catppuccin/vscode": "^3.14.0"
   }

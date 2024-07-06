@@ -1,18 +1,28 @@
+// Astro-related imports
 import { rehypeHeadingIds } from '@astrojs/markdown-remark'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
-import vercel from '@astrojs/vercel/static'
 import { defineConfig } from 'astro/config'
 import { astroExpressiveCode } from 'astro-expressive-code'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import remarkDirective from 'remark-directive'
 
+// Local imports
 import { remarkAdmonitions } from './src/libs/remark'
 
+// https://astro.build/config
 export default defineConfig({
   integrations: [astroExpressiveCode(), mdx(), sitemap()],
   markdown: {
-    rehypePlugins: [rehypeHeadingIds, [rehypeAutolinkHeadings, { behavior: 'wrap' }]],
+    rehypePlugins: [
+      rehypeHeadingIds,
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: 'wrap',
+        },
+      ],
+    ],
     remarkPlugins: [remarkDirective, remarkAdmonitions],
     syntaxHighlight: false,
   },
@@ -22,5 +32,4 @@ export default defineConfig({
   },
   site: 'https://rajdeepm.xyz',
   output: 'static',
-  adapter: vercel(),
 })
