@@ -1,4 +1,4 @@
-import frappe from '@catppuccin/vscode/themes/frappe.json' with { type: 'json' }
+import frappe from '@catppuccin/vscode/themes/frappe.json' assert { type: 'json' }
 import { defineEcConfig } from 'astro-expressive-code'
 
 export default defineEcConfig({
