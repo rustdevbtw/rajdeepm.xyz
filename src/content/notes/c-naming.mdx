@@ -4,6 +4,8 @@ description: Naming is tough, especially when C is involved. No one reaches any 
 publishDate: 2024-07-06
 ---
 
+import Pkg from '@components/Pkg.astro'
+
 ## Naming is Hard
 
 One wise man once said (did he?):
@@ -29,11 +31,11 @@ int Factorial(int n) {
   return n * Factorial(n - 1);
 }
 
-int Strlen(char* s) {
+int Strlen(char *str) {
   const int MAX = 1024*1024*1024;
   int result = 0;
 
-  for (int i = 0; s[i] != NULL && i <= MAX; i++) {
+  for (int i = 0; str[i] != NULL && i <= MAX; i++) {
     result++;
   }
 
@@ -42,3 +44,73 @@ int Strlen(char* s) {
 ```
 
 The _only_ exception to this, is the `main` function. And ofc, existing Standard Functions are also exempt.
+
+### Structures
+
+So, here comes `struct`s, for which, I use `PascalCase`:
+
+```c title="pascalcased_struct.c"
+struct Person {
+  char *name;
+  int age;
+};
+
+struct Point {
+  int x;
+  int y;
+};
+
+typedef struct {
+  int data;
+  struct Node *next;
+} Node;
+```
+
+Then, use them as such in functions:
+
+```c title="using_structs_in_fn.c"
+#include <stdlib.h>
+#include <stdio.h>
+
+struct Node* CreateNode(int data) {
+  struct Node *new_node = (Node *)malloc(sizeof(Node));
+  if (!new_node) {
+    printf("Memory Allocation failed!\n");
+    exit(1);
+  }
+
+  new_node->data = data;
+  new_node->next = NULL;
+  return new_node;
+}
+
+void PrintNode(struct Node *head) {
+  struct Node *current = head;
+  while (current != NULL) {
+    printf("%d -> ", current->data);
+    current = current->next;
+  }
+  printf("NULL\n");
+}
+
+int main() {
+  // Creating Nodes
+  struct Node *head = CreateNode(1);
+  head->next = CreateNode(2);
+  head->next->next = CreateNode(3);
+
+  // Print the Node
+  PrintNode(head);
+
+  // Free the memory
+  Node *current = head;
+  Node *next;
+  while (current != NULL) {
+    next = current->next;
+    free(current);
+    current = next;
+  }
+
+  return 0;
+}
+```
