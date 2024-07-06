@@ -3,7 +3,7 @@
   <p>Rajdeep's personal website</p>
 </div>
 
-Built with [Astro](https://astro.build) & hosted on [Vercel](https://vercel.com).
+Built with [Astro](https://astro.build) & hosted on [Cloudflare Pages](https://cloudflare.com).
 
 ## License
 
