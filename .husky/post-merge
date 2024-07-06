@@ -1,0 +1,1 @@
+sed -i 's/assert/with/g' ec.config.mjs
