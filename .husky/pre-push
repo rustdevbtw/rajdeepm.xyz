@@ -1,4 +1,0 @@
-sed -i 's/with/assert/g' ec.config.mjs
-git add .
-git commit -s -m "Correct astro.config.js"
-HUSKY=0 git push

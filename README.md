@@ -1,3 +1,8 @@
+<!--toc:start-->
+
+- [License](#license)
+<!--toc:end-->
+
 <div align="center">
   <h1>rajdeepm.xyz 🪚</h1>
   <p>Rajdeep's personal website</p>

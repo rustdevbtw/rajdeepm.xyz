@@ -1,5 +1,16 @@
+import { readFile } from 'node:fs/promises'
+
 import frappe from '@catppuccin/vscode/themes/frappe.json' assert { type: 'json' }
 import { defineEcConfig } from 'astro-expressive-code'
+
+const LANG = await readFile('./grammers/edn.json')
+
+frappe.tokenColors.push({
+  scope: ['constant.language.symbol.edn'],
+  settings: {
+    fontStyle: 'italic',
+  },
+})
 
 export default defineEcConfig({
   styleOverrides: {
@@ -29,4 +40,7 @@ export default defineEcConfig({
   themeCssSelector: (theme) => `[data-theme='${theme.type}']`,
   themes: [frappe],
   useDarkModeMediaQuery: false,
+  shiki: {
+    langs: [JSON.parse(LANG.toString(), 'utf8')],
+  },
 })

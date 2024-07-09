@@ -1,0 +1,131 @@
+---
+title: EDN - The beautiful config format no one uses
+description: In the midst of JSON-YAML Spaghetti, there's a relatively unknown format called EDN. It's beautiful.
+publishDate: 2024-07-09
+---
+
+## What is it?
+
+An example would make things clear:
+
+```edn
+{
+  ; Using OpenAI as the provider
+  :provider "openai"
+
+  ; OpenAI options
+  :openai {
+    ; Set the Base URL (Groq, in this case)
+    :url "https://api.groq.com/openai/v1"
+    ; Set the model (Llama3 70B, in this case)
+    :model "llama3-70b-8192"
+  }
+
+  ; Ollama options
+  :ollama {
+    ; The Ollama API URL
+    :url "http://localhost:11434"
+    ; Set the Ollama model name
+    :model "mistral"
+  }
+
+  ; Git options
+  :git {
+    ; Enable Git signing (only for hooks)
+    ; For normal usage, add "-s" to :pass instead
+    :sign true
+    ; Enable hooks
+    ; When enabled, it checks for --as-hook
+    ; And if it specified stores the generated message to .cts/msg
+    ; You can then do, cat ".cts/msg > $1
+    ; You should then clean that message file (it's recommended to add this file to .gitignore)
+    :hooks true
+    ; Additional arguments to pass to Git (only applicable when running outside a hook)
+    ; they would be added as-it-is
+    :pass "-s"
+  }
+
+  ; Cts options
+  :cts {
+    ; Select from a list of 5 generated messages
+    :list true
+    ; Automatically commit without prompting (can't be used with :list)
+    :force false
+    ; Add gitmoji
+    :gitmoji true
+    ; Types to select from
+    :types [
+      "feat"
+      "fix"
+      "docs"
+      "style"
+      "refactor"
+      "test"
+      "chore"
+    ]
+    ; Show the cost of the request, and confirm that before making the request
+    :fee true
+    ; The commit message template
+    ; {GIT_BRANCH} - the placeholder for the current Git branch
+    ; {COMMIT_MESSAGE} - the placeholder for the generated commit message
+    :template "[{GIT_BRANCH}]: {COMMIT_MESSAGE}"
+    ; Set your preferred language
+    :language "english"
+  }
+
+  ; Gitmoji mapping for each commit type
+  ; Note: older version of Cts came with some pre-defined gitmoji mappings
+  ; But it no longer does, as of v4.0.0
+  ; Example:
+  ; :docs "📝"
+  :gitmoji {
+    :feat "✨"
+    :fix "🚑"
+    :docs "📝"
+    :style "💄"
+    :refactor "♻️"
+    :test "✅"
+    :chore "🔧"
+  }
+}
+```
+
+:::note
+Taken from [`cts`](https://github.com/rustdevbtw/cts)
+:::
+:::note
+The above code wouldn't automatically get highlighted by [`expressive-code`](https://expressive-code.com).  
+I use a custom TextMate Grammer for EDN to have it highlighted.
+:::
+
+## Comparison
+
+| Feature               | JSON                         | YAML                         | TOML                        | EDN                         |
+| --------------------- | ---------------------------- | ---------------------------- | --------------------------- | --------------------------- |
+| **Syntax**            | Lightweight, strict          | Indentation-based, flexible  | Minimalist, explicit        | Lightweight, readable       |
+| **Data Types**        | Objects, arrays, basic types | Objects, arrays, basic types | Tables, arrays, basic types | Maps, lists, symbols, more  |
+| **Comments**          | No                           | Yes (using `#`)              | Yes (using `#` and `//`)    | Yes (using `;`)             |
+| **Extensibility**     | Limited                      | No                           | No                          | Yes (through custom tags)   |
+| **Language Agnostic** | Yes                          | No                           | No                          | Yes                         |
+| **Tooling Support**   | Extensive                    | Good                         | Growing                     | Customizable                |
+| **Git Integration**   | Yes                          | Yes                          | Yes                         | Yes                         |
+| **Readability**       | Moderate                     | High                         | High                        | High                        |
+| **Complexity**        | Simple                       | Moderate                     | Simple                      | Moderate                    |
+| **Popular Use Cases** | APIs, Configs                | Configs, Data Serialization  | Configs, Data Serialization | Configs, Data Serialization |
+
+## Why EDN Stands Out
+
+EDN offers several advantages over traditional configuration formats:
+
+1. Simplicity and Readability: EDN's syntax is simple and easy to read, making it straightforward to write and understand configuration files.
+2. Data Structure Support: It supports a wide range of data structures including maps, lists, strings, symbols, and more complex data types, providing flexibility in configuration.
+3. Language Independence: EDN is language-agnostic, meaning it can be used with any programming language, making it versatile for different development environments.
+4. Extensibility: EDN allows for extensibility through custom tags, enabling developers to define and use domain-specific data types within their configurations.
+5. Tooling Support: While not as widely supported as JSON or YAML out-of-the-box, EDN can be integrated with various tools and editors through custom syntax highlighting and parsing configurations, as demonstrated with expressive-code.
+6. Git Integration: EDN's structured format lends itself well to version control systems like Git, allowing for clear and manageable diffs and merges.
+
+In conclusion, while EDN may not be as popular as JSON or YAML, its elegance, flexibility, and tooling capabilities make it a compelling choice for developers seeking a more expressive and maintainable configuration format.
+
+## Example
+
+One example of me using EDN directly, is at [`cts`](https://github.com/rustdevbtw/cts).
