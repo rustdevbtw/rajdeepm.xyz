@@ -1,0 +1,40 @@
+Welcome to Nobody's Corner
+
+Hey there! I'm Rajdeep, a 17-year-old student from India with a passion for open-source
+and simplicity. I'm a proud Linux user and an advocate for clean and minimalistic solutions,
+which is why my personal webpage is just a single text file. No HTML, CSS, or JS here—
+just straight-up simplicity.
+
+Posts:
+	· Hello, World! (goto /hello)
+	· EDN: The beautiful config format no one uses. (goto /edn)
+
+Skills:
+- Rust
+- C
+- JavaScript/TypeScript
+- Some C++
+- HTML/CSS
+
+Contact Me:
+- Matrix: @rajdeepm:matrix.org[0]
+- Email: nobody@rajdeepm.xyz[1] (recommended)
+- Discord: _rajdeep_
+
+Public Keys:
+- GPG: goto /gpg[2]
+- SSH: goto /ssh[3]
+
+GitHub: rustdevbtw[4]
+
+Feel free to reach out or connect with me through any of the above channels.
+
+Thanks for stopping by!
+
+References
+
+[0]: https://matrix.to/#/@rajdeepm:matrix.org
+[1]: mailto:nobody@rajdeepm.xyz
+[2]: https://rajdeepm.xyz/gpg
+[3]: https://rajdeepm.xyz/ssh
+[4]: https://github.com/rustdevbtw

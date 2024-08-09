@@ -1,0 +1,41 @@
+name: Generate and Commit Changes
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Run Bun script
+        run: bun ./gen.ts
+
+      - name: Commit changes to dist branch
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+
+          LAST_COMMIT_SHA=$(git rev-parse HEAD)
+          
+          # Create and checkout the dist branch if it doesn't exist
+          git fetch origin dist || git checkout --orphan dist
+          
+          # Add and commit new dist files
+          git add .
+          git commit -m "[${LAST_COMMIT_SHA}] update"
+          
+          # Push changes to the dist branch
+          git push origin dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
