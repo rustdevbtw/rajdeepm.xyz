@@ -31,9 +31,6 @@ jobs:
           # Create and checkout the dist branch if it doesn't exist
           git fetch origin dist || git checkout --orphan dist
           
-          # Remove all files from the dist branch
-          git rm -rf .
-
           # Add and commit new dist files
           git add .
           git commit -m "[${LAST_COMMIT_SHA}] update"
