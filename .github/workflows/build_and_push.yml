@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - uses: oven-sh/setup-bun@v2
 
@@ -28,8 +28,14 @@ jobs:
 
           LAST_COMMIT_SHA=$(git rev-parse HEAD)
           
-          # Create and checkout the dist branch if it doesn't exist
-          git fetch origin dist || git checkout --orphan dist
+          git checkout dist
+
+          git clone https://github.com/rustdevbtw/rajdeepm.xyz rajdeepm.xyz
+          cd rajdeepm.xyz
+          bun ./gen.ts
+          cp meta.json ../
+          cp index.txt ../
+          rm -rf rajdeepm.xyz
           
           # Add and commit new dist files
           git add .
