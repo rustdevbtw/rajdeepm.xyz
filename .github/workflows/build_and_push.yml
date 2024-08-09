@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: dist
 
       - uses: oven-sh/setup-bun@v2
 
@@ -28,9 +30,6 @@ jobs:
 
           LAST_COMMIT_SHA=$(git rev-parse HEAD)
           
-          git fetch origin dist
-          git checkout origin/dist
-
           git clone https://github.com/rustdevbtw/rajdeepm.xyz rajdeepm.xyz
           cd rajdeepm.xyz
           bun ./gen.ts
