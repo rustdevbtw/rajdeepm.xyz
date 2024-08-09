@@ -28,7 +28,8 @@ jobs:
 
           LAST_COMMIT_SHA=$(git rev-parse HEAD)
           
-          git checkout dist
+          git fetch origin dist
+          git checkout origin/dist
 
           git clone https://github.com/rustdevbtw/rajdeepm.xyz rajdeepm.xyz
           cd rajdeepm.xyz
