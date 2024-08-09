@@ -34,6 +34,16 @@ jobs:
           bun ./gen.ts
           cp meta.json ../
           cp index.txt ../
+          rm -rf ../posts
+          cp -r posts ../
+          rm -rf ../keys
+          cp -r keys ../
+          rm -rf ../.github
+          cp -r .github ../
+          cp ./deno* ../
+          cp ./*.png ../
+          cp ./*.ts ../
+          cp ./*.md ../
           LAST_COMMIT_SHA=$(git rev-parse HEAD)
           cd ..
           rm -rf rajdeepm.xyz
