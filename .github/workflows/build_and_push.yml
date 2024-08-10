@@ -20,9 +20,6 @@ jobs:
 
       - uses: oven-sh/setup-bun@v2
 
-      - name: Run Bun script
-        run: bun ./gen.ts
-
       - name: Commit changes to dist branch
         run: |
           export LAST_COMMIT_SHA="<unknown>"
