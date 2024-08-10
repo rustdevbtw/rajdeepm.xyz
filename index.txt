@@ -6,6 +6,7 @@ which is why my personal webpage is just a single text file. No HTML, CSS, or JS
 just straight-up simplicity.
 
 Posts:
+	· How to navigate this site. And why there's no HTML, CSS, or JS. (goto /navigate)
 	· EDN: The beautiful config format no one uses. (goto /edn)
 
 Skills:

@@ -34,5 +34,7 @@ await listFiles();
 let c = await fs.readFile("./index.txt");
 c = c.toString("utf8").replaceAll("#POSTS_AUTO", `Posts:\n${replaced.join("\n")}`);
 await fs.writeFile("./index.txt", c);
+let sha = Bun.argv[2];
+posts["SHA"] = sha;
 let s = JSON.stringify(posts, 4);
 await fs.writeFile("./meta.json", s);
