@@ -28,6 +28,7 @@ jobs:
  
           git clone https://github.com/rustdevbtw/rajdeepm.xyz rajdeepm.xyz
           cd rajdeepm.xyz
+          LAST_COMMIT_SHA=$(git rev-parse HEAD)
           bun ./gen.ts $LAST_COMMIT_SHA
           cp meta.json ../
           cp index.txt ../
@@ -41,8 +42,8 @@ jobs:
           cp ./*.png ../
           cp ./*.ts ../
           cp ./*.md ../
-          LAST_COMMIT_SHA=$(git rev-parse HEAD)
-          cd ..
+          cp ./*.json ../
+          cd ../
           rm -rf rajdeepm.xyz
           
           # Add and commit new dist files
