@@ -52,6 +52,7 @@ jobs:
           
           LAST_COMMIT_SHA=$(git rev-parse HEAD)
           bun run gen.ts $LAST_COMMIT_SHA
+          git add .
           git commit -m "[${LAST_COMMIT_SHA}] meta"
           
           # Push changes to the dist branch
