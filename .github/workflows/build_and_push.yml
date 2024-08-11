@@ -28,7 +28,6 @@ jobs:
  
           git clone https://github.com/rustdevbtw/rajdeepm.xyz rajdeepm.xyz
           cd rajdeepm.xyz
-          LAST_COMMIT_SHA=$(git rev-parse HEAD)
           bun ./gen.ts $LAST_COMMIT_SHA
           cp meta.json ../
           cp index.txt ../
@@ -43,12 +42,18 @@ jobs:
           cp ./*.ts ../
           cp ./*.md ../
           cp ./*.json ../
+          LAST_COMMIT_SHA=$(git rev-parse HEAD)
           cd ../
           rm -rf rajdeepm.xyz
           
           # Add and commit new dist files
           git add .
           git commit -m "[${LAST_COMMIT_SHA}] update"
+          
+          LAST_COMMIT_SHA=$(git rev-parse HEAD)
+          bun run gen.ts $LAST_COMMIT_SHA
+          git add .
+          git commit -m "[${LAST_COMMIT_SHA}] meta"
           
           # Push changes to the dist branch
           git push origin dist
