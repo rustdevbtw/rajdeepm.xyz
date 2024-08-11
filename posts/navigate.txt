@@ -22,3 +22,9 @@ and say, it's SHA is `08a49e0e234a10dce03b0d7808c4fd3a15311b4b`. Your URI will b
 `/hello?sha=08a49e0e234a10dce03b0d7808c4fd3a15311b4b`. Go there, and you'll have it! In most cases, however, you don't
 have to figure that hash yourself. Instead, just look in your history. You'll find that this site actually redirects normal
 requests to SHA-ed one. Automatically. Meaning, every page you visit here gets redirected to a true permalink.
+
+References
+
+[0]: https://github.com/rustdevbtw/rajdeepm.xyz
+[1]: https://github.com/rustdevbtw/rajdeepm.xyz/tree/dist
+[2]: https://github.com/rustdevbtw/rajdeepm.xyz/commits/dist/
