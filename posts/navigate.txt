@@ -13,17 +13,17 @@ otherwise, I'm geniunely curious to know how you're reading it :). Go to the hom
 So, go to the `/` path directly. It'll have a `Posts` section. That lists all the posts, with a `goto` link at
 the end. Again, you've to go there manually. Each page is also a simple text file. Like this one. Then, read.
 
-I liked article X, but it's not here anymore!
+# I liked article X, but it's not here anymore!
 
 This site is immutable. That is, just go to the GitHub[0], browse the dist[1] branch, and check for the history[2].
-Find which commit removed it. Copy it's previous SHA hash. Append ?sha=<sha> to the end of the URI of the post, with <sha>
-replaced with the aforementioned SHA. Such as, if the post was `hello` (in `/hello`), it's file is in `posts/hello.txt`,
-and say, it's SHA is `08a49e0e234a10dce03b0d7808c4fd3a15311b4b`. Your URI will be
+Find which commit removed it. Copy it's previous SHA hash. Append `?sha=<sha>` to the end of the URI of the post, with
+`<sha>` replaced with the aforementioned SHA. Such as, if the post was `hello` (in `/hello`), it's file is in 
+`posts/hello.txt`, and say, it's SHA is `08a49e0e234a10dce03b0d7808c4fd3a15311b4b`. Your URI will be
 `/hello?sha=08a49e0e234a10dce03b0d7808c4fd3a15311b4b`. Go there, and you'll have it! In most cases, however, you don't
 have to figure that hash yourself. Instead, just look in your history. You'll find that this site actually redirects normal
 requests to SHA-ed one. Automatically. Meaning, every page you visit here gets redirected to a true permalink.
 
-References
+# References
 
 [0]: https://github.com/rustdevbtw/rajdeepm.xyz
 [1]: https://github.com/rustdevbtw/rajdeepm.xyz/tree/dist

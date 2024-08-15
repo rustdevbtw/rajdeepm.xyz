@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+  <html>
+      <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>EDN: The beautiful config format no one uses.</title>
+          <style>@font-face {
+    font-family: 'CascadiaCodeNF';
+    src: url('/font.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+  font-family: 'CascadiaCodeNF' !important;
+}
+
+*:not(h1,h2,h3,h4,h5,h6) {
+  background-color: #292c3c;
+  color: #c6d0f5;
+  font-size: 15px;
+  line-height: 27px;
+}
+
+code:not(:has(pre)) {
+  background-color: #303446;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border: 1.78px solid #838ba7;
+}
+
+code:has(pre) pre {
+  background-color: #303446;
+  border-radius: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 2px;
+  margin-top: 1.2px;
+  border: 3px solid #838ba7;
+  color: #f2d5cf;
+  font-size: 13px;
+  font-style: normal;
+}
+
+sup a {
+  font-size: 10px;
+}
+
+a {
+  text-decoration: none;
+  border: 2px solid #838ba7;
+  border-radius: 5px;
+  padding-left: 2px;
+  color: #a6d189;
+}
+</style>
+      </head>
+      <body>
+          <h1>EDN: The beautiful config format no one uses.</h1>
+          <p><h2># What is it?</h2>An example would make things clearer:<br/><code><pre>{<br/>  ; Using OpenAI as the provider<br/>  :provider "openai"<br/>  ; OpenAI options<br/>  :openai {<br/>    ; Set the Base URL (Groq, in this case)<br/>    :url "https://api.groq.com/openai/v1"<br/>    ; Set the model (Llama3 70B, in this case)<br/>    :model "llama3-70b-8192"<br/>  }<br/>  ; Ollama options<br/>  :ollama {<br/>    ; The Ollama API URL<br/>    :url "http://localhost:11434"<br/>    ; Set the Ollama model name<br/>    :model "mistral"<br/>  }<br/>  ; Git options<br/>  :git {<br/>    ; Enable Git signing (only for hooks)<br/>    ; For normal usage, add "-s" to :pass instead<br/>    :sign true<br/>    ; Enable hooks<br/>    ; When enabled, it checks for --as-hook<br/>    ; And if it specified stores the generated message to .cts/msg<br/>    ; You can then do, cat ".cts/msg &gt; $1<br/>    ; You should then clean that message file (it's recommended to add this file to .gitignore)<br/>    :hooks true<br/>    ; Additional arguments to pass to Git (only applicable when running outside a hook)<br/>    ; they would be added as-it-is<br/>    :pass "-s"<br/>  }<br/>  ; Cts options<br/>  :cts {<br/>    ; Select from a list of 5 generated messages<br/>    :list true<br/>    ; Automatically commit without prompting (can't be used with :list)<br/>    :force false<br/>    ; Add gitmoji<br/>    :gitmoji true<br/>    ; Types to select from<br/>    :types [<br/>      "feat"<br/>      "fix"<br/>      "docs"<br/>      "style"<br/>      "refactor"<br/>      "test"<br/>      "chore"<br/>    ]<br/>    ; Show the cost of the request, and confirm that before making the request<br/>    :fee true<br/>    ; The commit message template<br/>    ; {GIT_BRANCH} - the placeholder for the current Git branch<br/>    ; {COMMIT_MESSAGE} - the placeholder for the generated commit message<br/>    :template "[{GIT_BRANCH}]: {COMMIT_MESSAGE}"<br/>    ; Set your preferred language<br/>    :language "english"<br/>  }<br/>  ; Gitmoji mapping for each commit type<br/>  ; Note: older version of Cts came with some pre-defined gitmoji mappings<br/>  ; But it no longer does, as of v4.0.0<br/>  ; Example:<br/>  ; :docs "📝"<br/>  :gitmoji {<br/>    :feat "✨"<br/>    :fix "🚑"<br/>    :docs "📝"<br/>    :style "💄"<br/>    :refactor "♻️"<br/>    :test "✅"<br/>    :chore "🔧"<br/>  }<br/>}<br/></pre></code>Taken from <code>cts</code><sup><a href="https://github.com/rustdevbtw/cts">[0]</a></sup>.<br/><h2># Comparison</h2>| Feature           | JSON                         | YAML                         | TOML                        | EDN                         |<br/>| ----------------- | ---------------------------- | ---------------------------- | --------------------------- | --------------------------- |<br/>| Syntax            | Lightweight, strict          | Indentation-based, flexible  | Minimalist, explicit        | Lightweight, readable       |<br/>| Data Types        | Objects, arrays, basic types | Objects, arrays, basic types | Tables, arrays, basic types | Maps, lists, symbols, more  |<br/>| Comments          | No                           | Yes (using <code>#</code>)              | Yes (using <code>#</code> and <code>//</code>)    | Yes (using <code>;</code>)             |<br/>| Extensibility     | Limited                      | No                           | No                          | Yes (through custom tags)   |<br/>| Language Agnostic | Yes                          | No                           | No                          | Yes                         |<br/>| Tooling Support   | Extensive                    | Good                         | Growing                     | Customizable                |<br/>| Git Integration   | Yes                          | Yes                          | Yes                         | Yes                         |<br/>| Readability       | Moderate                     | High                         | High                        | High                        |<br/>| Complexity        | Simple                       | Moderate                     | Simple                      | Moderate                    |<br/>| Popular Use Cases | APIs, Configs                | Configs, Data Serialization  | Configs, Data Serialization | Configs, Data Serialization |<br/><h2># Why EDN Stands Out</h2>EDN offers several advantages over traditional configuration formats:<br/>1. Simplicity and Readability: EDN's syntax is simple and easy to read, making it straightforward to write and understand configuration files.<br/>2. Data Structure Support: It supports a wide range of data structures including maps, lists, strings, symbols, and more complex data types, providing<br/>flexibility in configuration.<br/>3. Language Independence: EDN is language-agnostic, meaning it can be used with any programming language, making it versatile for different development<br/>environments.<br/>4. Extensibility: EDN allows for extensibility through custom tags, enabling developers to define and use domain-specific data types within their configurations.<br/>5. Tooling Support: While not as widely supported as JSON or YAML out-of-the-box, EDN can be integrated with various tools and editors through custom<br/>syntax highlighting and parsing configurations, just as I did.<br/>In conclusion, while EDN may not be as popular as JSON or YAML, its elegance, flexibility, and tooling capabilities make it a compelling choice for developers<br/>seeking a more expressive and maintainable configuration format.<br/><h2># Example</h2>One example of me using EDN directly, is at <code>cts</code><sup><a href="https://github.com/rustdevbtw/cts">[0]</a></sup>.<br/><h2># References</h2>[0]: https://github.com/rustdevbtw/cts<br/><br/></p>
+      </body>
+  </html>

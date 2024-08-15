@@ -9,19 +9,22 @@ Posts:
 	· How to navigate this site. And why there's no HTML, CSS, or JS. (goto /navigate)
 	· EDN: The beautiful config format no one uses. (goto /edn)
 
-Skills:
+# Skills
+
 - Rust
 - C
 - JavaScript/TypeScript
 - Some C++
 - HTML/CSS
 
-Contact Me:
+# Contact Me
+
 - Matrix: @rajdeepm:matrix.org[0]
 - Email: nobody@rajdeepm.xyz[1] (recommended)
 - Discord: _rajdeep_
 
-Public Keys:
+# Public Keys
+
 - GPG: goto /gpg[2]
 - SSH: goto /ssh[3]
 
@@ -31,7 +34,7 @@ Feel free to reach out or connect with me through any of the above channels.
 
 Thanks for stopping by!
 
-References
+# References
 
 [0]: https://matrix.to/#/@rajdeepm:matrix.org
 [1]: mailto:nobody@rajdeepm.xyz

@@ -29,6 +29,8 @@ jobs:
           git clone https://github.com/rustdevbtw/rajdeepm.xyz rajdeepm.xyz
           cd rajdeepm.xyz
           bun ./gen.ts $LAST_COMMIT_SHA
+          bun ./html.ts
+          find ./ -type f -name "*.html" -exec mv ./{} ../ \;
           cp meta.json ../
           cp index.txt ../
           rm -rf ../posts
