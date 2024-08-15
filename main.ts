@@ -39,7 +39,7 @@ app.get("*", async (c: Context) => {
     c.req.header("X-Archive-Latest") || false;
   const html = c.req.query("html") != undefined ||
     c.req.header("Accept")?.includes("text/html") || c.req.header("X-HTML") ||
-    false;
+    false && c.req.query("txt") == undefined;
   if (!sha && latest) {
     switch (c.req.path) {
       case "/":
