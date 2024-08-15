@@ -1,9 +1,9 @@
 EDN: The beautiful config format no one uses.
 
-What is it?
+# What is it?
 
 An example would make things clearer:
-
+```
 {
   ; Using OpenAI as the provider
   :provider "openai"
@@ -83,10 +83,11 @@ An example would make things clearer:
     :chore "🔧"
   }
 }
+```
 
 Taken from `cts`[0].
 
-Comparison
+# Comparison
 
 | Feature           | JSON                         | YAML                         | TOML                        | EDN                         |
 | ----------------- | ---------------------------- | ---------------------------- | --------------------------- | --------------------------- |
@@ -101,22 +102,26 @@ Comparison
 | Complexity        | Simple                       | Moderate                     | Simple                      | Moderate                    |
 | Popular Use Cases | APIs, Configs                | Configs, Data Serialization  | Configs, Data Serialization | Configs, Data Serialization |
 
-Why EDN Stands Out
+# Why EDN Stands Out
 
 EDN offers several advantages over traditional configuration formats:
 
 1. Simplicity and Readability: EDN's syntax is simple and easy to read, making it straightforward to write and understand configuration files.
-2. Data Structure Support: It supports a wide range of data structures including maps, lists, strings, symbols, and more complex data types, providing flexibility in configuration.
-3. Language Independence: EDN is language-agnostic, meaning it can be used with any programming language, making it versatile for different development environments.
+2. Data Structure Support: It supports a wide range of data structures including maps, lists, strings, symbols, and more complex data types, providing
+flexibility in configuration.
+3. Language Independence: EDN is language-agnostic, meaning it can be used with any programming language, making it versatile for different development
+environments.
 4. Extensibility: EDN allows for extensibility through custom tags, enabling developers to define and use domain-specific data types within their configurations.
-5. Tooling Support: While not as widely supported as JSON or YAML out-of-the-box, EDN can be integrated with various tools and editors through custom syntax highlighting and parsing configurations, as demonstrated with expressive-code.
+5. Tooling Support: While not as widely supported as JSON or YAML out-of-the-box, EDN can be integrated with various tools and editors through custom
+syntax highlighting and parsing configurations, just as I did.
 
-In conclusion, while EDN may not be as popular as JSON or YAML, its elegance, flexibility, and tooling capabilities make it a compelling choice for developers seeking a more expressive and maintainable configuration format.
+In conclusion, while EDN may not be as popular as JSON or YAML, its elegance, flexibility, and tooling capabilities make it a compelling choice for developers
+seeking a more expressive and maintainable configuration format.
 
-Example
+# Example
 
 One example of me using EDN directly, is at `cts`[0].
 
-References
+# References
 
 [0]: https://github.com/rustdevbtw/cts

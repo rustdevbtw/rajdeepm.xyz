@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'CascadiaCodeNF';
+    src: url('/font.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+  font-family: 'CascadiaCodeNF' !important;
+}
+
+*:not(h1,h2,h3,h4,h5,h6) {
+  background-color: #292c3c;
+  color: #c6d0f5;
+  font-size: 15px;
+  line-height: 27px;
+}
+
+code:not(:has(pre)) {
+  background-color: #303446;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border: 1.78px solid #838ba7;
+}
+
+code:has(pre) pre {
+  background-color: #303446;
+  border-radius: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 2px;
+  margin-top: 1.2px;
+  border: 3px solid #838ba7;
+  color: #f2d5cf;
+  font-size: 13px;
+  font-style: normal;
+}
+
+sup a {
+  font-size: 10px;
+}
+
+a {
+  text-decoration: none;
+  border: 2px solid #838ba7;
+  border-radius: 5px;
+  padding-left: 2px;
+  color: #a6d189;
+}
