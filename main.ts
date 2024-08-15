@@ -73,7 +73,7 @@ app.get("*", async (c: Context) => {
     switch (c.req.path) {
       case "/":
         return fstatic(sha, `/index.${html ? "html" : "txt"}`, {
-          headers: { "Content-Type": html ? "text/html" : "text/plain" },
+          "Content-Type": html ? "text/html" : "text/plain",
         });
       case "/gpg":
         return fstatic(sha, "/keys/gpg");
