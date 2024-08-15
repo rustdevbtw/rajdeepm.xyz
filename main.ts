@@ -37,9 +37,11 @@ app.get("*", async (c: Context) => {
   const sha = c.req.query("sha") || c.req.header("X-Archive-SHA") || false;
   const latest = c.req.query("latest") != undefined ||
     c.req.header("X-Archive-Latest") || false;
-  const html = c.req.query("html") != undefined ||
+  const html = (c.req.query("html") != undefined ||
     c.req.header("Accept")?.includes("text/html") || c.req.header("X-HTML") ||
-    false && c.req.query("txt") == undefined;
+    false) && c.req.query("txt") == undefined;
+  const { url } = c.req;
+  const parsed = new URL(url);
   if (!sha && latest) {
     switch (c.req.path) {
       case "/":
@@ -67,7 +69,9 @@ app.get("*", async (c: Context) => {
   } else {
     if (!sha) {
       // @ts-ignore posts has everything. Don't worry
-      return c.redirect(`${c.req.path}?sha=${posts["SHA"]}`);
+      return c.redirect(
+        `${c.req.path}${parsed.search || "?"}&sha=${posts[c.req.path]}`,
+      );
     }
 
     switch (c.req.path) {
