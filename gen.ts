@@ -1,7 +1,7 @@
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
 
-const directoryPath = './posts';
+const directoryPath = "./posts";
 
 let posts = {};
 let replaced = [];
@@ -25,14 +25,17 @@ async function listFiles() {
       }
     }
   } catch (err) {
-    console.error('Error reading directory:', err);
+    console.error("Error reading directory:", err);
   }
 }
 
 await listFiles();
 
 let c = await fs.readFile("./index.txt");
-c = c.toString("utf8").replaceAll("#POSTS_AUTO", `Posts:\n${replaced.join("\n")}`);
+c = c.toString("utf8").replaceAll(
+  "#POSTS_AUTO",
+  `Posts:\n${replaced.join("\n")}`,
+);
 await fs.writeFile("./index.txt", c);
 let sha = Bun.argv[2];
 posts["SHA"] = sha;
