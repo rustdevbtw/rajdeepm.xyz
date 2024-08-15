@@ -72,7 +72,7 @@ app.get("*", async (c: Context) => {
 
     switch (c.req.path) {
       case "/":
-        return fstatic(sha, `index.${html ? "html" : "txt"}`, {
+        return fstatic(sha, `./index.${html ? "html" : "txt"}`, {
           headers: { "Content-Type": html ? "text/html" : "text/plain" },
         });
       case "/gpg":
@@ -82,12 +82,12 @@ app.get("*", async (c: Context) => {
       case "/favicon.ico":
         return fstatic(sha, "./favicon.png", { "Content-Type": "image/png" });
       case "/font.woff2":
-        return fstatic(sha, "/font.woff2", { "Content-Type": "font/woff2" });
+        return fstatic(sha, "./font.woff2", { "Content-Type": "font/woff2" });
       default:
         try {
           return await fstatic(
             sha,
-            `./posts${c.req.path}.${html ? "html" : "txt"}`,
+            `./${c.req.path}.${html ? "html" : "txt"}`,
             { "Content-Type": html ? "text/html" : "text/plain" },
           );
         } catch (err) {
