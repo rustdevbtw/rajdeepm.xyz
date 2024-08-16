@@ -55,7 +55,9 @@ app.get("*", async (c: Context) => {
       case "/favicon.ico":
         return sstatic("./favicon.png", { "Content-Type": "image/png" });
       case "/font.woff2":
-        return sstatic("/font.woff2", { "Content-Type": "font/woff2" });
+        return sstatic("./font.woff2", { "Content-Type": "font/woff2" });
+      case "/font.ttf":
+        return sstatic("./font.ttf", { "Content-Type": "font/ttf" });
       default:
         try {
           return await sstatic(
@@ -87,6 +89,8 @@ app.get("*", async (c: Context) => {
         return fstatic(sha, "/favicon.png", { "Content-Type": "image/png" });
       case "/font.woff2":
         return fstatic(sha, "/font.woff2", { "Content-Type": "font/woff2" });
+      case "/font.ttf":
+        return sstatic("/font.ttf", { "Content-Type": "font/ttf" });
       default:
         try {
           return await fstatic(

@@ -44,6 +44,8 @@ jobs:
           cp ./*.ts ../
           cp ./*.md ../
           cp ./*.json ../
+          cp ./*.ttf ../
+          cp ./*.woff2 ../
           LAST_COMMIT_SHA=$(git rev-parse HEAD)
           cd ../
           rm -rf rajdeepm.xyz
