@@ -70,7 +70,7 @@ app.get("*", async (c: Context) => {
     if (!sha) {
       // @ts-ignore posts has everything. Don't worry
       return c.redirect(
-        `${c.req.path}${parsed.search || "?"}&sha=${posts["SHA"]}`,
+        `${c.req.path}${parsed.search || "?"}&sha=${posts[c.req.path]}`,
       );
     }
 
