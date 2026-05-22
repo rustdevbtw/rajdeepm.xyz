@@ -20,7 +20,7 @@ Posts:
 # Contact Me
 
 - Matrix: @rajdeepm:matrix.org[0]
-- Email: nobody@rajdeepm.xyz[1] (recommended)
+- Email: raj@isworking.dev[1] (recommended)
 - Discord: _rajdeep_
 
 # Public Keys
@@ -37,7 +37,7 @@ Thanks for stopping by!
 # References
 
 [0]: https://matrix.to/#/@rajdeepm:matrix.org
-[1]: mailto:nobody@rajdeepm.xyz
+[1]: mailto:raj@isworking.dev
 [2]: https://rajdeepm.xyz/gpg
 [3]: https://rajdeepm.xyz/ssh
 [4]: https://github.com/isworking
