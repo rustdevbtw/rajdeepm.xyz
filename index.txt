@@ -1,7 +1,7 @@
 Welcome to Nobody's Corner
 
-Hey there! I'm Rajdeep, a 17-year-old student from India with a passion for open-source
-and simplicity. I'm a proud Linux user and an advocate for clean and minimalistic solutions,
+Hey there! I'm Rajdeep, a 19-year-old student from India with a passion for open-source
+and simplicity. I'm a proud Linux user (recently got a MacBook Neo, though) and an advocate for clean and minimalistic solutions,
 which is why my personal webpage is just a single text file. No HTML, CSS, or JS here—
 just straight-up simplicity.
 
